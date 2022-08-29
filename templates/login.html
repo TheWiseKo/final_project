@@ -1,32 +1,52 @@
 {% extends "base.html" %}
+{% load static %}
+{% block title %}로그인{% endblock %}
+{% comment %} TODO: 5. base.html 템플릿을 만들어 모든 페이지에서 상속받아 보여주세요 {% endcomment %}
+<!-- <html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
 
+<body> -->
 {% block contents %}
-<div class="row mt-5">
-  <div class="col-12 text-center">
-    <h1>로그인</h1>
-  </div>
-</div>
-<div class="row mt-5">
-  <div class="col-12">
-    {{ error }}
-  </div>
-</div>
-<div class="row mt-5">
-  <div class="col-12">
-    <form method="POST" action=".">
-      {% csrf_token %}
-      {% for field in form %}
-      <div class="form-group">
-        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-        <input type="{{ field.field.widget.input_type }}" class="form-control" id="{{ field.id_for_label }}"
-          placeholder="{{ field.label }}" name="{{ field.name }}" />
+  <div class="container">
+      {% comment %} TODO: 1. /login로 접근하여 로그인 페이지를 통해 로그인이 되게 해주세요 {% endcomment %}
+      <div class="row mt-5">
+        <div class="col-12 text-center">
+          <h1>로그인</h1>
+        </div>
       </div>
-      {% if field.errors %}
-      <span style="color: red">{{ field.errors }}</span>
-      {% endif %}
-      {% endfor %}
-      <button type="submit" class="btn btn-primary">로그인</button>
-    </form>
+      <div class="row mt-5">
+        <div class="col-12">
+          {% if error %}
+            {{ error }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-12">
+          <form method="POST" action=".">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="email">이메일 주소:</label>
+              {{ form.email }}
+              <!-- <input type="..." class="form-control" id="..."
+                placeholder="..." name="..." /> -->
+            </div>
+            <div class="form-group">
+              <label for="password">비밀번호:</label>
+              {{ form.password }}
+            </div>
+            <button type="submit" class="btn btn-primary">로그인</button>
+            <div class="text-right">
+              <a href="{% url 'register' %}" class="text-gray"><small>회원가입</small></a>
+            </div>
+          </form>
+        </div>
+      </div>
   </div>
-</div>
 {% endblock %}
+<!-- </body>
+
+</html> -->

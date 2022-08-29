@@ -1,6 +1,17 @@
 {% extends "base.html" %}
-{% block contents %}
+{% load static %}
+{% block title %}사용자 목록{% endblock %}
+{% comment %} TODO: 5. base.html 템플릿을 만들어 모든 페이지에서 상속받아 보여주세요 {% endcomment %}
+<!-- <html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
 
+<body> -->
+{% block contents %}
+  <div class="container">
+      
 <div class="row mt-5">
   <div class="col-12">
     <table class="table table-light">
@@ -50,5 +61,8 @@
     </li>
   </ul>
 </nav>
-
+  </div>
 {% endblock %}
+<!-- </body>
+
+</html> -->
